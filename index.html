@@ -58,9 +58,10 @@ h1 {
 .nav-buttons a {
     text-decoration: none;
     color: #111;
-    border: 1px solid #dddddd;
-    padding: 10px 18px;
-    font-size: 0.82rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-size: 0.8rem;
     font-weight: 400;
     transition: all 0.2s ease;
 }
@@ -107,9 +108,9 @@ h1 {
 }
 
 .gallery {
-    max-width: 1400px;
+    max-width: 1500px;
     margin: 0 auto;
-    padding: 0 40px 64px;
+    padding: 0 60px 80px;
     position: relative;
 }
 
@@ -155,8 +156,8 @@ h1 {
     transform: translateY(-50%);
     border: none;
     background: none;
-    color: #d8d8d8;
-    font-size: 2.5rem;
+    color: #cfcfcf;
+    font-size: 2.2rem;
     cursor: pointer;
     z-index: 10000;
 }
@@ -259,6 +260,7 @@ footer a {
         font-size: 2rem;
         color: #999999;
         background: rgba(255,255,255,0.75);
+        padding: 8px 18px;
     }
 
     .prev {
@@ -340,6 +342,8 @@ const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 
 let currentIndex = 0;
+let touchStartX = 0;
+let touchEndX = 0;
 
 function getColumnCount() {
     if (window.innerWidth <= 700) return 2;
@@ -374,7 +378,7 @@ function layoutMasonry() {
         img.style.left = x + "px";
         img.style.top = y + "px";
 
-        const ratio = img.naturalHeight / img.naturalWidth;
+        const ratio = img.naturalHeight / img.naturalWidth || 1.5;
         const displayedHeight = columnWidth * ratio;
 
         columnHeights[shortestColumn] += displayedHeight + gap;
@@ -390,6 +394,7 @@ images.forEach((img, index) => {
         currentIndex = index;
         lightboxImg.src = img.src;
         lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
     });
 });
 
@@ -398,6 +403,7 @@ window.addEventListener("resize", layoutMasonry);
 
 function closeLightbox() {
     lightbox.classList.remove("active");
+    document.body.style.overflow = "";
 }
 
 function nextImage() {
@@ -418,8 +424,25 @@ document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowLeft") prevImage();
 });
 
+lightbox.addEventListener("touchstart", function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+lightbox.addEventListener("touchend", function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+            nextImage();
+        } else {
+            prevImage();
+        }
+    }
+});
+
 lightbox.addEventListener("click", function(e) {
-    if (e.target === lightbox) {
+    if (e.target === lightbox && window.innerWidth > 700) {
         closeLightbox();
     }
 });
