@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arthur Burda – Glasgow</title>
+
+<link rel="icon" href="/favicon.png?v=3" type="image/png">
+<link rel="shortcut icon" href="/favicon.png?v=3" type="image/png">
+<link rel="apple-touch-icon" href="/favicon.png?v=3">
+
+<style>
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #fff; color: #111; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+.cover { padding: 90px 24px 64px; text-align: center; }
+h1 { margin: 0; font-size: 2.8rem; font-weight: 300; letter-spacing: 0.01em; }
+.subtitle { color: #666; margin-top: 12px; font-size: 1rem; font-weight: 300; }
+.gallery { max-width: 1500px; margin: 0 auto; padding: 0 60px 80px; position: relative; }
+.gallery img { position: absolute; height: auto; display: block; cursor: pointer; transition: opacity 0.2s ease; }
+.gallery img:hover { opacity: 0.9; }
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.97); z-index: 9999; flex-direction: column; justify-content: center; align-items: center; padding: 32px 20px; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 92vw; max-height: 82vh; width: auto; height: auto; }
+.prev, .next { position: fixed; top: 50%; transform: translateY(-50%); border: none; background: none; color: #cfcfcf; font-size: 2.2rem; cursor: pointer; z-index: 10000; }
+.prev:hover, .next:hover { color: #777; }
+.prev { left: 0; }
+.next { right: 0; }
+.close { position: fixed; top: 20px; right: 30px; background: none; border: none; font-size: 2rem; color: #111; cursor: pointer; padding: 16px; }
+footer { text-align: center; padding: 56px 24px; color: #666; font-size: 0.88rem; line-height: 1.8; }
+@media (max-width: 700px) {
+    .cover { padding: 56px 16px 40px; }
+    h1 { font-size: 2.2rem; }
+    .subtitle { font-size: 0.95rem; }
+    .gallery { padding: 0 20px 40px; }
+    .lightbox { padding: 24px 14px; }
+    .lightbox img { max-width: 94vw; max-height: 78vh; }
+    .prev, .next { top: auto; bottom: 22px; transform: none; font-size: 2rem; color: #999; background: rgba(255,255,255,0.75); padding: 8px 18px; }
+    .prev { left: 70px; }
+    .next { right: 70px; }
+    .close { top: 10px; right: 14px; }
+}
+</style>
+</head>
+<body>
+<section class="cover"><h1>Arthur Burda</h1><p class="subtitle">Glasgow</p></section>
+<main class="gallery" id="gallery">
+    <img src="../glasgow-images/DSCF2414.jpg" alt="">
+    <img src="../glasgow-images/DSCF2417.jpg" alt="">
+    <img src="../glasgow-images/DSCF2421.jpg" alt="">
+    <img src="../glasgow-images/DSCF2424.jpg" alt="">
+    <img src="../glasgow-images/DSCF2426.jpg" alt="">
+    <img src="../glasgow-images/DSCF2430.jpg" alt="">
+    <img src="../glasgow-images/DSCF2435.jpg" alt="">
+    <img src="../glasgow-images/DSCF2438.jpg" alt="">
+    <img src="../glasgow-images/DSCF2439.jpg" alt="">
+    <img src="../glasgow-images/DSCF2440.jpg" alt="">
+    <img src="../glasgow-images/DSCF2445.jpg" alt="">
+    <img src="../glasgow-images/DSCF2449.jpg" alt="">
+    <img src="../glasgow-images/DSCF2463.jpg" alt="">
+    <img src="../glasgow-images/DSCF2471.jpg" alt="">
+    <img src="../glasgow-images/DSCF2478.jpg" alt="">
+    <img src="../glasgow-images/DSCF2508.jpg" alt="">
+    <img src="../glasgow-images/DSCF2512.jpg" alt="">
+    <img src="../glasgow-images/DSCF2517.jpg" alt="">
+    <img src="../glasgow-images/DSCF2521.jpg" alt="">
+    <img src="../glasgow-images/DSCF2524.jpg" alt="">
+    <img src="../glasgow-images/DSCF2550.jpg" alt="">
+    <img src="../glasgow-images/DSCF2553.jpg" alt="">
+    <img src="../glasgow-images/DSCF2554.jpg" alt="">
+    <img src="../glasgow-images/DSCF2561.jpg" alt="">
+    <img src="../glasgow-images/DSCF2563.jpg" alt="">
+    <img src="../glasgow-images/DSCF2566.jpg" alt="">
+    <img src="../glasgow-images/DSCF2568.jpg" alt="">
+    <img src="../glasgow-images/DSCF2586.jpg" alt="">
+    <img src="../glasgow-images/Image01.jpg" alt="">
+    <img src="../glasgow-images/Image02.jpg" alt="">
+    <img src="../glasgow-images/Image03.jpg" alt="">
+    <img src="../glasgow-images/Image04.jpg" alt="">
+    <img src="../glasgow-images/Image05.jpg" alt="">
+    <img src="../glasgow-images/Image06.jpg" alt="">
+    <img src="../glasgow-images/Image07.jpg" alt="">
+    <img src="../glasgow-images/Image08.jpg" alt="">
+    <img src="../glasgow-images/Image09.jpg" alt="">
+    <img src="../glasgow-images/Image10.jpg" alt="">
+    <img src="../glasgow-images/Image11.jpg" alt="">
+    <img src="../glasgow-images/Image12.jpg" alt="">
+    <img src="../glasgow-images/Image13.jpg" alt="">
+    <img src="../glasgow-images/Image15.jpg" alt="">
+    <img src="../glasgow-images/Image16.jpg" alt="">
+    <img src="../glasgow-images/Image17.jpg" alt="">
+    <img src="../glasgow-images/Image18.jpg" alt="">
+    <img src="../glasgow-images/Image19.jpg" alt="">
+    <img src="../glasgow-images/Image20.jpg" alt="">
+    <img src="../glasgow-images/Image21.jpg" alt="">
+    <img src="../glasgow-images/Image22.jpg" alt="">
+    <img src="../glasgow-images/Image23.jpg" alt="">
+    <img src="../glasgow-images/Image24.jpg" alt="">
+    <img src="../glasgow-images/Image25.jpg" alt="">
+    <img src="../glasgow-images/Image26.jpg" alt="">
+    <img src="../glasgow-images/Image27.jpg" alt="">
+    <img src="../glasgow-images/Image28.jpg" alt="">
+    <img src="../glasgow-images/Image29.jpg" alt="">
+    <img src="../glasgow-images/Image30.jpg" alt="">
+    <img src="../glasgow-images/Image31.jpg" alt="">
+    <img src="../glasgow-images/Image32.jpg" alt="">
+    <img src="../glasgow-images/Image33.jpg" alt="">
+    <img src="../glasgow-images/Image34.jpg" alt="">
+    <img src="../glasgow-images/Image35.jpg" alt="">
+    <img src="../glasgow-images/Image36.jpg" alt="">
+    <img src="../glasgow-images/Image37.jpg" alt="">
+    <img src="../glasgow-images/Image38.jpg" alt="">
+    <img src="../glasgow-images/Image39.jpg" alt="">
+    <img src="../glasgow-images/Image40.jpg" alt="">
+    <img src="../glasgow-images/Image41.jpg" alt="">
+    <img src="../glasgow-images/Image42.jpg" alt="">
+    <img src="../glasgow-images/Image43.jpg" alt="">
+    <img src="../glasgow-images/Image44.jpg" alt="">
+    <img src="../glasgow-images/Image45.jpg" alt="">
+    <img src="../glasgow-images/Image46.jpg" alt="">
+    <img src="../glasgow-images/Image47.jpg" alt="">
+    <img src="../glasgow-images/Image48.jpg" alt="">
+    <img src="../glasgow-images/Image49.jpg" alt="">
+    <img src="../glasgow-images/Image50.jpg" alt="">
+    <img src="../glasgow-images/Image51.jpg" alt="">
+</main>
+<div class="lightbox" id="lightbox"><button class="close" onclick="closeLightbox()">×</button><button class="prev" onclick="prevImage()">‹</button><img id="lightbox-img" src="" alt=""><button class="next" onclick="nextImage()">›</button></div>
+<footer>© 2026 Arthur Burda</footer>
+<script>
+const gallery = document.getElementById("gallery");
+const images = document.querySelectorAll(".gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+let currentIndex = 0, touchStartX = 0, touchEndX = 0;
+function getColumnCount(){ if(window.innerWidth<=700)return 2; if(window.innerWidth<=1000)return 3; return 4; }
+function getGap(){ return window.innerWidth<=700 ? 8 : 14; }
+function layoutMasonry(){
+ const columnCount=getColumnCount(), gap=getGap();
+ const styles=window.getComputedStyle(gallery);
+ const paddingLeft=parseFloat(styles.paddingLeft), paddingRight=parseFloat(styles.paddingRight);
+ const galleryWidth=gallery.clientWidth-paddingLeft-paddingRight;
+ const columnWidth=(galleryWidth-gap*(columnCount-1))/columnCount;
+ const columnHeights=new Array(columnCount).fill(0);
+ images.forEach((img)=>{
+   img.style.width=columnWidth+"px";
+   const shortestColumn=columnHeights.indexOf(Math.min(...columnHeights));
+   const x=paddingLeft+shortestColumn*(columnWidth+gap);
+   const y=columnHeights[shortestColumn];
+   img.style.left=x+"px";
+   img.style.top=y+"px";
+   const ratio=img.naturalWidth>0 ? img.naturalHeight/img.naturalWidth : 1.5;
+   columnHeights[shortestColumn]+=columnWidth*ratio+gap;
+ });
+ gallery.style.height=Math.max(...columnHeights)+"px";
+}
+function relayoutSeveralTimes(){ layoutMasonry(); setTimeout(layoutMasonry,250); setTimeout(layoutMasonry,750); setTimeout(layoutMasonry,1500); setTimeout(layoutMasonry,3000); }
+images.forEach((img,index)=>{ img.addEventListener("load",relayoutSeveralTimes); img.addEventListener("error",relayoutSeveralTimes); img.addEventListener("click",()=>{ currentIndex=index; lightboxImg.src=img.src; lightbox.classList.add("active"); document.body.style.overflow="hidden"; }); });
+window.addEventListener("load",relayoutSeveralTimes); window.addEventListener("resize",relayoutSeveralTimes);
+function closeLightbox(){ lightbox.classList.remove("active"); document.body.style.overflow=""; }
+function nextImage(){ currentIndex=(currentIndex+1)%images.length; lightboxImg.src=images[currentIndex].src; }
+function prevImage(){ currentIndex=(currentIndex-1+images.length)%images.length; lightboxImg.src=images[currentIndex].src; }
+document.addEventListener("keydown",function(e){ if(!lightbox.classList.contains("active"))return; if(e.key==="Escape")closeLightbox(); if(e.key==="ArrowRight")nextImage(); if(e.key==="ArrowLeft")prevImage(); });
+lightbox.addEventListener("touchstart",function(e){ touchStartX=e.changedTouches[0].screenX; });
+lightbox.addEventListener("touchend",function(e){ touchEndX=e.changedTouches[0].screenX; const diff=touchStartX-touchEndX; if(Math.abs(diff)>50){ if(diff>0)nextImage(); else prevImage(); } });
+lightbox.addEventListener("click",function(e){ if(e.target===lightbox && window.innerWidth>700)closeLightbox(); });
+</script>
+</body>
+</html>
