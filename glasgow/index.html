@@ -1,155 +1,434 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arthur Burda – Glasgow & Luss</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur Burda – Glasgow & Luss</title>
 
-<link rel="icon" href="/favicon.png?v=3" type="image/png">
-<link rel="shortcut icon" href="/favicon.png?v=3" type="image/png">
-<link rel="apple-touch-icon" href="/favicon.png?v=3">
+    <link rel="icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="shortcut icon" href="/favicon.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon.png?v=3">
 
-<style>
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: #fff; color: #111; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
-.cover { padding: 90px 24px 64px; text-align: center; }
-h1 { margin: 0; font-size: 2.8rem; font-weight: 300; letter-spacing: 0.01em; }
-.subtitle { color: #666; margin-top: 12px; font-size: 1rem; font-weight: 300; }
-.gallery { max-width: 1500px; margin: 0 auto; padding: 0 60px 80px; position: relative; }
-.gallery img { position: absolute; height: auto; display: block; cursor: pointer; transition: opacity 0.2s ease; }
-.gallery img:hover { opacity: 0.9; }
-.lightbox { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.97); z-index: 9999; flex-direction: column; justify-content: center; align-items: center; padding: 32px 20px; }
-.lightbox.active { display: flex; }
-.lightbox img { max-width: 92vw; max-height: 82vh; width: auto; height: auto; }
-.prev, .next { position: fixed; top: 50%; transform: translateY(-50%); border: none; background: none; color: #cfcfcf; font-size: 2.2rem; cursor: pointer; z-index: 10000; }
-.prev:hover, .next:hover { color: #777; }
-.prev { left: 0; }
-.next { right: 0; }
-.close { position: fixed; top: 20px; right: 30px; background: none; border: none; font-size: 2rem; color: #111; cursor: pointer; padding: 16px; }
-footer { text-align: center; padding: 56px 24px; color: #666; font-size: 0.88rem; line-height: 1.8; }
-@media (max-width: 700px) {
-    .cover { padding: 56px 16px 40px; }
-    h1 { font-size: 2.2rem; }
-    .subtitle { font-size: 0.95rem; }
-    .gallery { padding: 0 20px 40px; }
-    .lightbox { padding: 24px 14px; }
-    .lightbox img { max-width: 94vw; max-height: 78vh; }
-    .prev, .next { top: auto; bottom: 22px; transform: none; font-size: 2rem; color: #999; background: rgba(255,255,255,0.75); padding: 8px 18px; }
-    .prev { left: 70px; }
-    .next { right: 70px; }
-    .close { top: 10px; right: 14px; }
-}
-</style>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #ffffff;
+            color: #111111;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        }
+
+        .cover {
+            padding: 90px 24px 64px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 300;
+            letter-spacing: 0.01em;
+        }
+
+        .subtitle {
+            color: #666666;
+            margin-top: 12px;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .nav-buttons {
+            margin-top: 32px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .nav-buttons a {
+            text-decoration: none;
+            color: #111111;
+            border: 1px solid #e5e5e5;
+            border-radius: 999px;
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            transition: all 0.2s ease;
+        }
+
+        .nav-buttons a:hover {
+            background: #111111;
+            color: #ffffff;
+        }
+
+        .gallery {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 60px 80px;
+            position: relative;
+        }
+
+        .gallery img {
+            position: absolute;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .gallery img:hover {
+            opacity: 0.9;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.97);
+            z-index: 9999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 32px 20px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 92vw;
+            max-height: 82vh;
+            width: auto;
+            height: auto;
+        }
+
+        .prev,
+        .next {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: none;
+            color: #cfcfcf;
+            font-size: 2.2rem;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        .prev:hover,
+        .next:hover {
+            color: #777777;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #111111;
+            cursor: pointer;
+            padding: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 56px 24px;
+            color: #666666;
+            font-size: 0.88rem;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 700px) {
+            .cover {
+                padding: 56px 16px 40px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 0.95rem;
+            }
+
+            .nav-buttons {
+                margin-top: 28px;
+                gap: 10px;
+            }
+
+            .nav-buttons a {
+                padding: 9px 15px;
+                font-size: 0.78rem;
+            }
+
+            .gallery {
+                padding: 0 20px 40px;
+            }
+
+            .lightbox {
+                padding: 24px 14px;
+            }
+
+            .lightbox img {
+                max-width: 94vw;
+                max-height: 78vh;
+            }
+
+            .prev,
+            .next {
+                top: auto;
+                bottom: 22px;
+                transform: none;
+                font-size: 2rem;
+                color: #999999;
+                background: rgba(255, 255, 255, 0.75);
+                padding: 8px 18px;
+            }
+
+            .prev {
+                left: 70px;
+            }
+
+            .next {
+                right: 70px;
+            }
+
+            .close {
+                top: 10px;
+                right: 14px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<section class="cover"><h1>Arthur Burda</h1><p class="subtitle">Glasgow & Luss</p></section>
-<main class="gallery" id="gallery">
-    <img src="../scotland/Scotland_01.jpg" alt="">
-    <img src="../scotland/Scotland_02.jpg" alt="">
-    <img src="../scotland/Scotland_03.jpg" alt="">
-    <img src="../scotland/Scotland_04.jpg" alt="">
-    <img src="../scotland/Scotland_05.jpg" alt="">
-    <img src="../scotland/Scotland_06.jpg" alt="">
-    <img src="../scotland/Scotland_07.jpg" alt="">
-    <img src="../scotland/Scotland_08.jpg" alt="">
-    <img src="../scotland/Scotland_09.jpg" alt="">
-    <img src="../scotland/Scotland_10.jpg" alt="">
-    <img src="../scotland/Scotland_11.jpg" alt="">
-    <img src="../scotland/Scotland_12.jpg" alt="">
-    <img src="../scotland/Scotland_13.jpg" alt="">
-    <img src="../scotland/Scotland_14.jpg" alt="">
-    <img src="../scotland/Scotland_15.jpg" alt="">
-    <img src="../scotland/Scotland_16.jpg" alt="">
-    <img src="../scotland/Scotland_17.jpg" alt="">
-    <img src="../scotland/Scotland_18.jpg" alt="">
-    <img src="../scotland/Scotland_19.jpg" alt="">
-    <img src="../scotland/Scotland_20.jpg" alt="">
-    <img src="../scotland/Scotland_21.jpg" alt="">
-    <img src="../scotland/Scotland_22.jpg" alt="">
-    <img src="../scotland/Scotland_23.jpg" alt="">
-    <img src="../scotland/Scotland_24.jpg" alt="">
-    <img src="../scotland/Scotland_25.jpg" alt="">
-    <img src="../scotland/Scotland_26.jpg" alt="">
-    <img src="../scotland/Scotland_27.jpg" alt="">
-    <img src="../scotland/Scotland_28.jpg" alt="">
-    <img src="../scotland/Scotland_29.jpg" alt="">
-    <img src="../scotland/Scotland_30.jpg" alt="">
-    <img src="../scotland/Scotland_31.jpg" alt="">
-    <img src="../scotland/Scotland_32.jpg" alt="">
-    <img src="../scotland/Scotland_33.jpg" alt="">
-    <img src="../scotland/Scotland_34.jpg" alt="">
-    <img src="../scotland/Scotland_35.jpg" alt="">
-    <img src="../scotland/Scotland_36.jpg" alt="">
-    <img src="../scotland/Scotland_37.jpg" alt="">
-    <img src="../scotland/Scotland_38.jpg" alt="">
-    <img src="../scotland/Scotland_39.jpg" alt="">
-    <img src="../scotland/Scotland_40.jpg" alt="">
-    <img src="../scotland/Scotland_41.jpg" alt="">
-    <img src="../scotland/Scotland_42.jpg" alt="">
-    <img src="../scotland/Scotland_43.jpg" alt="">
-    <img src="../scotland/Scotland_44.jpg" alt="">
-    <img src="../scotland/Scotland_45.jpg" alt="">
-    <img src="../scotland/Scotland_46.jpg" alt="">
-    <img src="../scotland/Scotland_47.jpg" alt="">
-    <img src="../scotland/Scotland_48.jpg" alt="">
-    <img src="../scotland/Scotland_49.jpg" alt="">
-    <img src="../scotland/Scotland_50.jpg" alt="">
-    <img src="../scotland/Scotland_51.jpg" alt="">
-    <img src="../scotland/Scotland_52.jpg" alt="">
-    <img src="../scotland/Scotland_53.jpg" alt="">
-    <img src="../scotland/Scotland_54.jpg" alt="">
-    <img src="../scotland/Scotland_55.jpg" alt="">
-    <img src="../scotland/Scotland_56.jpg" alt="">
-    <img src="../scotland/Scotland_57.jpg" alt="">
-    <img src="../scotland/Scotland_58.jpg" alt="">
-    <img src="../scotland/Scotland_59.jpg" alt="">
-    <img src="../scotland/Scotland_60.jpg" alt="">
-    <img src="../scotland/Scotland_61.jpg" alt="">
-    <img src="../scotland/Scotland_62.jpg" alt="">
-    <img src="../scotland/Scotland_63.jpg" alt="">
-    <img src="../scotland/Scotland_64.jpg" alt="">
-    <img src="../scotland/Scotland_65.jpg" alt="">
-</main>
-<div class="lightbox" id="lightbox"><button class="close" onclick="closeLightbox()">×</button><button class="prev" onclick="prevImage()">‹</button><img id="lightbox-img" src="" alt=""><button class="next" onclick="nextImage()">›</button></div>
-<footer>© 2026 Arthur Burda</footer>
-<script>
-const gallery = document.getElementById("gallery");
-const images = document.querySelectorAll(".gallery img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-let currentIndex = 0, touchStartX = 0, touchEndX = 0;
-function getColumnCount(){ if(window.innerWidth<=700)return 2; if(window.innerWidth<=1000)return 3; return 4; }
-function getGap(){ return window.innerWidth<=700 ? 8 : 14; }
-function layoutMasonry(){
- const columnCount=getColumnCount(), gap=getGap();
- const styles=window.getComputedStyle(gallery);
- const paddingLeft=parseFloat(styles.paddingLeft), paddingRight=parseFloat(styles.paddingRight);
- const galleryWidth=gallery.clientWidth-paddingLeft-paddingRight;
- const columnWidth=(galleryWidth-gap*(columnCount-1))/columnCount;
- const columnHeights=new Array(columnCount).fill(0);
- images.forEach((img)=>{
-   img.style.width=columnWidth+"px";
-   const shortestColumn=columnHeights.indexOf(Math.min(...columnHeights));
-   const x=paddingLeft+shortestColumn*(columnWidth+gap);
-   const y=columnHeights[shortestColumn];
-   img.style.left=x+"px";
-   img.style.top=y+"px";
-   const ratio=img.naturalWidth>0 ? img.naturalHeight/img.naturalWidth : 1.5;
-   columnHeights[shortestColumn]+=columnWidth*ratio+gap;
- });
- gallery.style.height=Math.max(...columnHeights)+"px";
-}
-function relayoutSeveralTimes(){ layoutMasonry(); setTimeout(layoutMasonry,250); setTimeout(layoutMasonry,750); setTimeout(layoutMasonry,1500); setTimeout(layoutMasonry,3000); }
-images.forEach((img,index)=>{ img.addEventListener("load",relayoutSeveralTimes); img.addEventListener("error",relayoutSeveralTimes); img.addEventListener("click",()=>{ currentIndex=index; lightboxImg.src=img.src; lightbox.classList.add("active"); document.body.style.overflow="hidden"; }); });
-window.addEventListener("load",relayoutSeveralTimes); window.addEventListener("resize",relayoutSeveralTimes);
-function closeLightbox(){ lightbox.classList.remove("active"); document.body.style.overflow=""; }
-function nextImage(){ currentIndex=(currentIndex+1)%images.length; lightboxImg.src=images[currentIndex].src; }
-function prevImage(){ currentIndex=(currentIndex-1+images.length)%images.length; lightboxImg.src=images[currentIndex].src; }
-document.addEventListener("keydown",function(e){ if(!lightbox.classList.contains("active"))return; if(e.key==="Escape")closeLightbox(); if(e.key==="ArrowRight")nextImage(); if(e.key==="ArrowLeft")prevImage(); });
-lightbox.addEventListener("touchstart",function(e){ touchStartX=e.changedTouches[0].screenX; });
-lightbox.addEventListener("touchend",function(e){ touchEndX=e.changedTouches[0].screenX; const diff=touchStartX-touchEndX; if(Math.abs(diff)>50){ if(diff>0)nextImage(); else prevImage(); } });
-lightbox.addEventListener("click",function(e){ if(e.target===lightbox && window.innerWidth>700)closeLightbox(); });
-</script>
+    <section class="cover">
+        <h1>Arthur Burda</h1>
+        <p class="subtitle">Glasgow &amp; Luss</p>
+
+        <div class="nav-buttons">
+            <a href="/">Zurück</a>
+        </div>
+    </section>
+
+    <main class="gallery" id="gallery">
+        <img src="../scotland/Scotland_01.jpg" alt="">
+        <img src="../scotland/Scotland_02.jpg" alt="">
+        <img src="../scotland/Scotland_03.jpg" alt="">
+        <img src="../scotland/Scotland_04.jpg" alt="">
+        <img src="../scotland/Scotland_05.jpg" alt="">
+        <img src="../scotland/Scotland_06.jpg" alt="">
+        <img src="../scotland/Scotland_07.jpg" alt="">
+        <img src="../scotland/Scotland_08.jpg" alt="">
+        <img src="../scotland/Scotland_09.jpg" alt="">
+        <img src="../scotland/Scotland_10.jpg" alt="">
+        <img src="../scotland/Scotland_11.jpg" alt="">
+        <img src="../scotland/Scotland_12.jpg" alt="">
+        <img src="../scotland/Scotland_13.jpg" alt="">
+        <img src="../scotland/Scotland_14.jpg" alt="">
+        <img src="../scotland/Scotland_15.jpg" alt="">
+        <img src="../scotland/Scotland_16.jpg" alt="">
+        <img src="../scotland/Scotland_17.jpg" alt="">
+        <img src="../scotland/Scotland_18.jpg" alt="">
+        <img src="../scotland/Scotland_19.jpg" alt="">
+        <img src="../scotland/Scotland_20.jpg" alt="">
+        <img src="../scotland/Scotland_21.jpg" alt="">
+        <img src="../scotland/Scotland_22.jpg" alt="">
+        <img src="../scotland/Scotland_23.jpg" alt="">
+        <img src="../scotland/Scotland_24.jpg" alt="">
+        <img src="../scotland/Scotland_25.jpg" alt="">
+        <img src="../scotland/Scotland_26.jpg" alt="">
+        <img src="../scotland/Scotland_27.jpg" alt="">
+        <img src="../scotland/Scotland_28.jpg" alt="">
+        <img src="../scotland/Scotland_29.jpg" alt="">
+        <img src="../scotland/Scotland_30.jpg" alt="">
+        <img src="../scotland/Scotland_31.jpg" alt="">
+        <img src="../scotland/Scotland_32.jpg" alt="">
+        <img src="../scotland/Scotland_33.jpg" alt="">
+        <img src="../scotland/Scotland_34.jpg" alt="">
+        <img src="../scotland/Scotland_35.jpg" alt="">
+        <img src="../scotland/Scotland_36.jpg" alt="">
+        <img src="../scotland/Scotland_37.jpg" alt="">
+        <img src="../scotland/Scotland_38.jpg" alt="">
+        <img src="../scotland/Scotland_39.jpg" alt="">
+        <img src="../scotland/Scotland_40.jpg" alt="">
+        <img src="../scotland/Scotland_41.jpg" alt="">
+        <img src="../scotland/Scotland_42.jpg" alt="">
+        <img src="../scotland/Scotland_43.jpg" alt="">
+        <img src="../scotland/Scotland_44.jpg" alt="">
+        <img src="../scotland/Scotland_45.jpg" alt="">
+        <img src="../scotland/Scotland_46.jpg" alt="">
+        <img src="../scotland/Scotland_47.jpg" alt="">
+        <img src="../scotland/Scotland_48.jpg" alt="">
+        <img src="../scotland/Scotland_49.jpg" alt="">
+        <img src="../scotland/Scotland_50.jpg" alt="">
+        <img src="../scotland/Scotland_51.jpg" alt="">
+        <img src="../scotland/Scotland_52.jpg" alt="">
+        <img src="../scotland/Scotland_53.jpg" alt="">
+        <img src="../scotland/Scotland_54.jpg" alt="">
+        <img src="../scotland/Scotland_55.jpg" alt="">
+        <img src="../scotland/Scotland_56.jpg" alt="">
+        <img src="../scotland/Scotland_57.jpg" alt="">
+        <img src="../scotland/Scotland_58.jpg" alt="">
+        <img src="../scotland/Scotland_59.jpg" alt="">
+        <img src="../scotland/Scotland_60.jpg" alt="">
+        <img src="../scotland/Scotland_61.jpg" alt="">
+        <img src="../scotland/Scotland_62.jpg" alt="">
+        <img src="../scotland/Scotland_63.jpg" alt="">
+        <img src="../scotland/Scotland_64.jpg" alt="">
+        <img src="../scotland/Scotland_65.jpg" alt="">
+    </main>
+
+    <div class="lightbox" id="lightbox">
+        <button class="close" onclick="closeLightbox()">×</button>
+        <button class="prev" onclick="prevImage()">‹</button>
+        <img id="lightbox-img" src="" alt="">
+        <button class="next" onclick="nextImage()">›</button>
+    </div>
+
+    <footer>
+        © 2026 Arthur Burda
+    </footer>
+
+    <script>
+        const gallery = document.getElementById("gallery");
+        const images = document.querySelectorAll(".gallery img");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+
+        let currentIndex = 0;
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function getColumnCount() {
+            if (window.innerWidth <= 700) return 2;
+            if (window.innerWidth <= 1000) return 3;
+            return 4;
+        }
+
+        function getGap() {
+            if (window.innerWidth <= 700) return 8;
+            return 14;
+        }
+
+        function layoutMasonry() {
+            const columnCount = getColumnCount();
+            const gap = getGap();
+
+            const styles = window.getComputedStyle(gallery);
+            const paddingLeft = parseFloat(styles.paddingLeft);
+            const paddingRight = parseFloat(styles.paddingRight);
+
+            const galleryWidth = gallery.clientWidth - paddingLeft - paddingRight;
+            const columnWidth = (galleryWidth - gap * (columnCount - 1)) / columnCount;
+            const columnHeights = new Array(columnCount).fill(0);
+
+            images.forEach((img) => {
+                img.style.width = columnWidth + "px";
+
+                const shortestColumn = columnHeights.indexOf(Math.min(...columnHeights));
+                const x = paddingLeft + shortestColumn * (columnWidth + gap);
+                const y = columnHeights[shortestColumn];
+
+                img.style.left = x + "px";
+                img.style.top = y + "px";
+
+                const ratio = img.naturalWidth > 0
+                    ? img.naturalHeight / img.naturalWidth
+                    : 1.5;
+
+                columnHeights[shortestColumn] += columnWidth * ratio + gap;
+            });
+
+            gallery.style.height = Math.max(...columnHeights) + "px";
+        }
+
+        function relayoutSeveralTimes() {
+            layoutMasonry();
+            setTimeout(layoutMasonry, 250);
+            setTimeout(layoutMasonry, 750);
+            setTimeout(layoutMasonry, 1500);
+            setTimeout(layoutMasonry, 3000);
+        }
+
+        images.forEach((img, index) => {
+            img.addEventListener("load", relayoutSeveralTimes);
+            img.addEventListener("error", relayoutSeveralTimes);
+
+            img.addEventListener("click", () => {
+                currentIndex = index;
+                lightboxImg.src = img.src;
+                lightbox.classList.add("active");
+                document.body.style.overflow = "hidden";
+            });
+        });
+
+        window.addEventListener("load", relayoutSeveralTimes);
+        window.addEventListener("resize", relayoutSeveralTimes);
+
+        function closeLightbox() {
+            lightbox.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            lightboxImg.src = images[currentIndex].src;
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            lightboxImg.src = images[currentIndex].src;
+        }
+
+        document.addEventListener("keydown", function(event) {
+            if (!lightbox.classList.contains("active")) return;
+
+            if (event.key === "Escape") closeLightbox();
+            if (event.key === "ArrowRight") nextImage();
+            if (event.key === "ArrowLeft") prevImage();
+        });
+
+        lightbox.addEventListener("touchstart", function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        });
+
+        lightbox.addEventListener("touchend", function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    nextImage();
+                } else {
+                    prevImage();
+                }
+            }
+        });
+
+        lightbox.addEventListener("click", function(event) {
+            if (event.target === lightbox && window.innerWidth > 700) {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>
