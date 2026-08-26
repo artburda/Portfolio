@@ -350,8 +350,17 @@
         }
 
         images.forEach((img, index) => {
-            img.addEventListener("load", relayoutSeveralTimes);
+            const markLoaded = () => {
+                img.classList.add("loaded");
+                relayoutSeveralTimes();
+            };
+
+            img.addEventListener("load", markLoaded);
             img.addEventListener("error", relayoutSeveralTimes);
+
+            if (img.complete && img.naturalWidth > 0) {
+                markLoaded();
+            }
 
             img.addEventListener("click", () => {
                 currentIndex = index;
