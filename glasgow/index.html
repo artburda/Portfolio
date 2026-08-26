@@ -149,19 +149,31 @@
 
         footer {
             text-align: center;
-            padding: 56px 24px;
+            padding: 64px 24px 48px;
             color: #666666;
-            font-size: 0.88rem;
-            line-height: 1.8;
+            font-size: 0.86rem;
+            line-height: 1.6;
         }
 
+        .print-note {
+            margin: 0 0 28px;
+            color: #555555;
+            font-size: 0.84rem;
+            font-weight: 300;
+        }
+
+        .copyright {
+            color: #777777;
+            font-size: 0.78rem;
+        }
 
         .rights-notice {
-            display: inline-block;
+            display: block;
             max-width: 620px;
-            color: #999999;
-            font-size: 0.72rem;
-            line-height: 1.6;
+            margin: 18px auto 0;
+            color: #aaaaaa;
+            font-size: 0.68rem;
+            line-height: 1.5;
         }
 
         @media (max-width: 700px) {
@@ -274,8 +286,14 @@
     </div>
 
     <footer>
-        © 2026 Arthur Burda<br>
-        Alle Rechte vorbehalten.<br><br>
+        <p class="print-note">
+            Prints ausgewählter Arbeiten auf Anfrage.
+        </p>
+
+        <div class="copyright">
+            © 2026 Arthur Burda · Alle Rechte vorbehalten.
+        </div>
+
         <span class="rights-notice">
             Die Verwendung der Fotografien und Inhalte dieser Website für
             AI-Training, Machine Learning, automatisierte Datensammlung oder
