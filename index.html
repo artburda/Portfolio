@@ -120,10 +120,15 @@
             height: auto;
             display: block;
             cursor: pointer;
-            transition: opacity 0.2s ease;
+            opacity: 0;
+            transition: opacity 0.35s ease;
         }
 
-        .gallery img:hover {
+        .gallery img.loaded {
+            opacity: 1;
+        }
+
+        .gallery img.loaded:hover {
             opacity: 0.9;
         }
 
@@ -190,15 +195,13 @@
 
         footer {
             text-align: center;
-            padding: 64px 24px 48px;
+            padding: 56px 24px;
             color: #666666;
-            font-size: 0.86rem;
-            line-height: 1.6;
+            font-size: 0.88rem;
+            line-height: 1.8;
         }
 
         footer strong {
-            display: block;
-            margin-bottom: 10px;
             color: #111111;
             font-weight: 500;
         }
@@ -209,24 +212,19 @@
         }
 
         .print-note {
-            margin: 24px 0 28px;
-            color: #555555;
-            font-size: 0.84rem;
+            margin: 20px 0;
+            color: #888888;
+            font-size: 0.8rem;
             font-weight: 300;
         }
 
-        .copyright {
-            color: #777777;
-            font-size: 0.78rem;
-        }
 
         .rights-notice {
-            display: block;
+            display: inline-block;
             max-width: 620px;
-            margin: 18px auto 0;
-            color: #aaaaaa;
-            font-size: 0.68rem;
-            line-height: 1.5;
+            color: #999999;
+            font-size: 0.72rem;
+            line-height: 1.6;
         }
 
         @media (max-width: 700px) {
@@ -324,29 +322,29 @@
     </section>
 
     <main class="gallery" id="gallery">
-        <img src="images/Letzi4k.jpg" alt="Letzigrund Stadion in Zürich, fotografiert von der Tribüne aus">
-        <img src="images/garagelenz.jpg" alt="Monotones Wohnhaus über einer geschwungenen Betonrampe und Garage in Lenzburg">
-        <img src="images/11 wildegg.jpg" alt="Autobahnviadukt durch eine bewaldete Landschaft bei Wildegg im Aargau">
-        <img src="images/Kreuzung2.jpg" alt="Dorfstrasse mit Kirche und Wohnhäusern in Dottikon im Aargau">
-        <img src="images/Hendschiken4.jpg" alt="Bahnhof Hendschiken mit blauem Stationsschild und Bahngeleisen">
-        <img src="images/Acker3k.jpg" alt="Industriegebäude am Rand eines Feldes in Dottikon im Aargau">
-        <img src="images/Villmergen4k.jpg" alt="Gerade Landstrasse zwischen Feldern und Industriegebiet in Villmergen im Aargau">
-        <img src="images/fliesssystem.jpg" alt="Industrieanlage mit Silos und Betonfläche in Lenzburg">
-        <img src="images/Anglikon1.jpg" alt="Zusammenspiel aus kleiner Brücke, Landstrasse, Verkehrsschildern und Bäumen in Anglikon, Wohlen">
-        <img src="images/08 schafe.jpg" alt="Schafe auf einer Weide neben einem grünen landwirtschaftlichen Anhänger in Dintikon">
-        <img src="images/07 Druckreduzierstation.jpg" alt="Weisse Metalltür umgeben von dichtem grünen Gebüsch in Dintikon, Aargau">
-        <img src="images/02 Fahrverbot.jpg" alt="Blick von oben auf einen Weg mit Fahrverbotsschild in Aarau">
-        <img src="images/04 katze.jpg" alt="Katze die diagonal durch das Bild rennt in Thun">
-        <img src="images/05 braunwalder.jpg" alt="Braunwalder Schlachthof vor einer Gitterzaun im Industriegebiet in Wohlen">
-        <img src="images/Rednew.jpg" alt="Heruntergekommener Wohnblock in Dottikon im Aargau">
-        <img src="images/container 1.jpg" alt="Roter und weisser Container auf einer Baustelle in Wohlen">
-        <img src="images/turnhalle.jpg" alt="Turnhalle in Dottikon">
-        <img src="images/10 WGT.jpg" alt="Kleines Gewerbegebäude an einer Landstrasse in Wohlen im Aargau">
-        <img src="images/schnee.jpg" alt="Wohnsiedlung hinter einem verschneiten Feld in Dottikon im Aargau">
-        <img src="images/15 fabrik.jpg" alt="Silhouette eines Vogels über einer Fabrik in Dintikon">
-        <img src="images/16 velomensch.jpg" alt="Velofahrer im Licht- und Schattenspiel einer Betonarchitektur in Zürich">
-        <img src="images/17 cos.jpg" alt="Mann im Sonnenlicht vor einer Holztür und Betonarchitektur im Niederdorf, Zürich">
-        <img src="images/18 Tafelberg.jpg" alt="Wanderer auf einem felsigen Berggrat mit Berglandschaft im Hintergrund, Tafelberg, Kapstadt, Südafrika">
+        <img src="images/Letzi4k.jpg" alt="Letzigrund Stadion in Zürich, fotografiert von der Tribüne aus" loading="eager" decoding="async" fetchpriority="high">
+        <img src="images/garagelenz.jpg" alt="Monotones Wohnhaus über einer geschwungenen Betonrampe und Garage in Lenzburg" loading="eager" decoding="async" fetchpriority="high">
+        <img src="images/11 wildegg.jpg" alt="Autobahnviadukt durch eine bewaldete Landschaft bei Wildegg im Aargau" loading="eager" decoding="async">
+        <img src="images/Kreuzung2.jpg" alt="Dorfstrasse mit Kirche und Wohnhäusern in Dottikon im Aargau" loading="eager" decoding="async">
+        <img src="images/Hendschiken4.jpg" alt="Bahnhof Hendschiken mit blauem Stationsschild und Bahngeleisen" loading="eager" decoding="async">
+        <img src="images/Acker3k.jpg" alt="Industriegebäude am Rand eines Feldes in Dottikon im Aargau" loading="eager" decoding="async">
+        <img src="images/Villmergen4k.jpg" alt="Gerade Landstrasse zwischen Feldern und Industriegebiet in Villmergen im Aargau" loading="lazy" decoding="async">
+        <img src="images/fliesssystem.jpg" alt="Industrieanlage mit Silos und Betonfläche in Lenzburg" loading="lazy" decoding="async">
+        <img src="images/Anglikon1.jpg" alt="Zusammenspiel aus kleiner Brücke, Landstrasse, Verkehrsschildern und Bäumen in Anglikon, Wohlen" loading="lazy" decoding="async">
+        <img src="images/08 schafe.jpg" alt="Schafe auf einer Weide neben einem grünen landwirtschaftlichen Anhänger in Dintikon" loading="lazy" decoding="async">
+        <img src="images/07 Druckreduzierstation.jpg" alt="Weisse Metalltür umgeben von dichtem grünen Gebüsch in Dintikon, Aargau" loading="lazy" decoding="async">
+        <img src="images/02 Fahrverbot.jpg" alt="Blick von oben auf einen Weg mit Fahrverbotsschild in Aarau" loading="lazy" decoding="async">
+        <img src="images/04 katze.jpg" alt="Katze die diagonal durch das Bild rennt in Thun" loading="lazy" decoding="async">
+        <img src="images/05 braunwalder.jpg" alt="Braunwalder Schlachthof vor einer Gitterzaun im Industriegebiet in Wohlen" loading="lazy" decoding="async">
+        <img src="images/Rednew.jpg" alt="Heruntergekommener Wohnblock in Dottikon im Aargau" loading="lazy" decoding="async">
+        <img src="images/container 1.jpg" alt="Roter und weisser Container auf einer Baustelle in Wohlen" loading="lazy" decoding="async">
+        <img src="images/turnhalle.jpg" alt="Turnhalle in Dottikon" loading="lazy" decoding="async">
+        <img src="images/10 WGT.jpg" alt="Kleines Gewerbegebäude an einer Landstrasse in Wohlen im Aargau" loading="lazy" decoding="async">
+        <img src="images/schnee.jpg" alt="Wohnsiedlung hinter einem verschneiten Feld in Dottikon im Aargau" loading="lazy" decoding="async">
+        <img src="images/15 fabrik.jpg" alt="Silhouette eines Vogels über einer Fabrik in Dintikon" loading="lazy" decoding="async">
+        <img src="images/16 velomensch.jpg" alt="Velofahrer im Licht- und Schattenspiel einer Betonarchitektur in Zürich" loading="lazy" decoding="async">
+        <img src="images/17 cos.jpg" alt="Mann im Sonnenlicht vor einer Holztür und Betonarchitektur im Niederdorf, Zürich" loading="lazy" decoding="async">
+        <img src="images/18 Tafelberg.jpg" alt="Wanderer auf einem felsigen Berggrat mit Berglandschaft im Hintergrund, Tafelberg, Kapstadt, Südafrika" loading="lazy" decoding="async">
     </main>
 
     <div class="lightbox" id="lightbox">
@@ -357,16 +355,15 @@
     </div>
 
     <footer id="kontakt">
-        <strong>Kontakt</strong>
+        <strong>Kontakt</strong><br><br>
         <a href="mailto:artburda@hotmail.com">artburda@hotmail.com</a>
 
         <p class="print-note">
             Prints ausgewählter Arbeiten auf Anfrage.
         </p>
 
-        <div class="copyright">
-            © 2026 Arthur Burda · Alle Rechte vorbehalten.
-        </div>
+        © 2026 Arthur Burda<br>
+        Alle Rechte vorbehalten.<br><br>
 
         <span class="rights-notice">
             Die Verwendung der Fotografien und Inhalte dieser Website für
@@ -435,7 +432,17 @@
         }
 
         images.forEach((img, index) => {
-            img.addEventListener("load", relayoutSeveralTimes);
+            const markLoaded = () => {
+                img.classList.add("loaded");
+                relayoutSeveralTimes();
+            };
+
+            img.addEventListener("load", markLoaded);
+            img.addEventListener("error", relayoutSeveralTimes);
+
+            if (img.complete && img.naturalWidth > 0) {
+                markLoaded();
+            }
 
             img.addEventListener("click", () => {
                 currentIndex = index;
